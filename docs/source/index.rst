@@ -1,10 +1,14 @@
-Welcome to Lumache's documentation!
+Welcome to Gradient Coding Simulation's documentation!
 ===================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+**Abstract**
+This document describes the basic AWS EC2 cluster work flow setup for the Gradient Coding Simulation.
+It relies on the Python scripting language and the support from the [mpi4py packages](https://mpi4py.readthedocs.io/en/stable/index.html). 
+This document consists of three sections:  
+- Introduction
+- Usage
+- Coding
+
 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
@@ -21,5 +25,3 @@ Contents
    usage
    api
 
-
-Lumache has its documentation hosted on Read the Docs.
