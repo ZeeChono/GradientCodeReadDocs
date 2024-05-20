@@ -24,6 +24,8 @@ Contents
 
 .. toctree::
 
+   intro
    usage
    api
 
+   * :ref:`genindex`
