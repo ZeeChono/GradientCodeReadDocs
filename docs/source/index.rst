@@ -1,5 +1,5 @@
 Welcome to Gradient Coding Simulation's documentation!
-===================================
+======================================================
 
 **Abstract**
 This document describes the basic AWS EC2 cluster work flow setup for the Gradient Coding Simulation.
