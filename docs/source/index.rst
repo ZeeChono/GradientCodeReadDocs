@@ -27,5 +27,3 @@ Contents
    intro
    usage
    api
-
-   * :ref:`genindex`
