@@ -39,6 +39,7 @@ If you have configured your **~/.ssh/config** file and your key file correctly, 
    .. code-block:: 
 
       ssh master
+
 Please make sure the instance you want to connect to is online and the public ipv4 address is up to date in the config file (Because AWS allocates dynamic ipv4 to free tier users).
 
 
@@ -54,6 +55,7 @@ This step is pretty much copy, paste and wait. By default, the AMI chosen at ste
       sudo apt install python3-sklearn
 
    You could copy them line by line and wait for all to be installed.
+
 Notice that this step is expected to be completed for **each of your instance**.
 
 
@@ -96,6 +98,7 @@ Similarly to what we have done in step 2, we are going to setup **~/.ssh** for e
       scp ~/.ssh/<your key>.pem master:~/.ssh
       scp ~/.ssh/<your key>.pem w1:~/.ssh
       scp ~/.ssh/<your key>.pem w2:~/.ssh
+
    If you have more worker nodes, please go on
 
 Then log into your instances, and create a similar config file under the .ssh folder, using master node as an example:
