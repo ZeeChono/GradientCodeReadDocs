@@ -17,17 +17,58 @@ Once finishing the new account sign-up, you will be redirected to the homepage o
 
 After being brought to the EC2 dashboard, click launch instances in the middle of the screen.
 
+   .. image:: assets/1_EC2_search.png
+      :alt: EC2 search
+      :width: 600px
+      :height: 350px
+      :align: center
+   .. image:: assets/2_launch_instance.png
+      :alt: Launch a new instance
+      :width: 600px
+      :height: 350px
+      :align: center
+
 
 
 Step 3: Configure and Launch Instances
 --------------------------------------
 
 - Input the name (editable afterwards) and select the correct AMI (Amazon Machine Image)
+
+   .. image:: assets/3_select_IMI.png
+      :alt: Select correct IMI
+      :width: 600px
+      :height: 350px
+      :align: center
 - Select the instance type -- t2.micro for our project specifically
 - Create a new key pair for ssh (you can reuse the same key for as many instances as you want)
+
+   .. image:: assets/4_instance.png
+      :alt: Choose instance type and ssh key pair
+      :width: 600px
+      :height: 350px
+      :align: center
 - Save the .pem key on your machine under **~/.ssh** 
+
+   .. image:: assets/5_instance.png
+      :alt: Save ssh key pair
+      :width: 600px
+      :height: 350px
+      :align: center
 - Edit the Network Settings as follows, give it a name for later simplicity to search it up
+
+   .. image:: assets/6_instance.png
+      :alt: Network settings
+      :width: 600px
+      :height: 350px
+      :align: center
 - Storage Configuration, for free tier, you have 30 gb in total, free to modify it as you need
+
+   .. image:: assets/7_instance.png
+      :alt: Set the storage option
+      :width: 600px
+      :height: 350px
+      :align: center
 - Under the summary, input the number of instances you would like to instantiate, then click "Launch instance"
 - Goto instances dashboard and check their status, public ipv4 address, and then add a config file under the same folder
 
