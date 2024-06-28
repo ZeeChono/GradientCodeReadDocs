@@ -52,15 +52,15 @@ Step 3: Configure and Launch Instances
 
    .. image:: assets/5_instance.png
       :alt: Save ssh key pair
-      :width: 600px
-      :height: 350px
+      :width: 400px
+      :height: 400px
       :align: center
 - Edit the Network Settings as follows, give it a name for later simplicity to search it up
 
    .. image:: assets/6_instance.png
       :alt: Network settings
-      :width: 600px
-      :height: 350px
+      :width: 300px
+      :height: 400px
       :align: center
 - Storage Configuration, for free tier, you have 30 gb in total, free to modify it as you need
 
@@ -80,6 +80,12 @@ If you have configured your **~/.ssh/config** file and your key file correctly, 
    .. code-block:: 
 
       ssh master
+
+   .. image:: assets/ssh_configfile.png
+      :alt: SSH config file settings
+      :width: 600px
+      :height: 350px
+      :align: center
 
 Please make sure the instance you want to connect to is online and the public ipv4 address is up to date in the config file (Because AWS allocates dynamic ipv4 to free tier users).
 
