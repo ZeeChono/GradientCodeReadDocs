@@ -148,7 +148,7 @@ Similarly to what we have done in step 2, we are going to setup **~/.ssh** for e
 
    If you have more worker nodes, please go on
 
-Then log into your instances, and create a similar config file under the .ssh folder, using master node as an example:
+Then ssh into your instances, and create a similar config file under the .ssh folder, here is an example of my master node .ssh/config file:
 
    .. code-block:: 
 
@@ -162,7 +162,7 @@ Then log into your instances, and create a similar config file under the .ssh fo
         User ubuntu
         IdentityFile ~/.ssh/first_instance.pem
 
-Second, we will have to modify the file **/etc/hosts**. Here's an example of how my file looks like on the master node. Update yours accordingly for each instance.
+Secondly, we will have to modify the file **/etc/hosts**. Here's an example of how my file looks like on the master node. Update yours accordingly for each instance.
 
    .. code-block:: 
 
@@ -179,6 +179,9 @@ Second, we will have to modify the file **/etc/hosts**. Here's an example of how
       ff02::3 ip6-allhosts
 
 Besides this, we should also enable TCP connection between these instances under the same **Network Security Group**. On dash board of the EC2, click Security Groups on the sidebar, this will bring you to the group we have just created in the step 2. Click "Edit inbound rules" after you enter the security group you created, add a new TCP rule as shown in the following screenshot.
+
+
+After we have finished all above cluster settings, try manually ssh to each other before mpirun command to ensure that the communication in cluster is setup correctly. 
 
 
 Step 8: Final Cluster MPI Test
