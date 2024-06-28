@@ -72,20 +72,30 @@ Step 3: Configure and Launch Instances
 - Under the summary, input the number of instances you would like to instantiate, then click "Launch instance"
 - Goto instances dashboard and check their status, public ipv4 address, and then add a config file under the same folder
 
+   .. image:: assets/EC2_dashboard.png
+      :alt: Set the storage option
+      :width: 400px
+      :height: 400px
+      :align: center
+
 
 Step 4: Test ssh from Local to your Instances
 ---------------------------------------------
-If you have configured your **~/.ssh/config** file and your key file correctly, open your terminal and type
-
-   .. code-block:: 
-
-      ssh master
+First, let us configure the **~/.ssh/config** file with the .pem key we have downloaded in the last step. The host names here in the screenshot are the corresponding ipv4 address which can be found on the dashboard of EC2.
 
    .. image:: assets/ssh_configfile.png
       :alt: SSH config file settings
       :width: 600px
       :height: 350px
       :align: center
+
+If you have configured your **~/.ssh/config** file and your key file correctly, open your terminal and type
+
+   .. code-block:: 
+
+      ssh master
+
+   
 
 Please make sure the instance you want to connect to is online and the public ipv4 address is up to date in the config file (Because AWS allocates dynamic ipv4 to free tier users).
 
