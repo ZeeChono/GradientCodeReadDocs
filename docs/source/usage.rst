@@ -180,8 +180,25 @@ Secondly, we will have to modify the file **/etc/hosts**. Here's an example of h
 
 Besides this, we should also enable TCP connection between these instances under the same **Network Security Group**. On dash board of the EC2, click Security Groups on the sidebar, this will bring you to the group we have just created in the step 2. Click "Edit inbound rules" after you enter the security group you created, add a new TCP rule as shown in the following screenshot.
 
+   .. image:: assets/8_network_setting1.png
+      :alt: Inbound rule setting1
+      :width: 600px
+      :height: 300px
+      :align: center   
+   .. image:: assets/9_network_setting2.png
+      :alt: Inbound rule setting2
+      :width: 600px
+      :height: 300px
+      :align: center 
+   .. image:: assets/10_network_setting3.png
+      :alt: Inbound rule setting3
+      :width: 600px
+      :height: 300px
+      :align: center 
 
-After we have finished all above cluster settings, try manually ssh to each other before mpirun command to ensure that the communication in cluster is setup correctly. 
+**Notice that the source of your newly added Custom TCP rule should be constrained within your secutrity group, otherwise you are opening your all ports to the public internet which is dangerous.**
+
+After we have finished all the cluster settings, try manually ssh to each other node on each node, before mpirun command to ensure that the communication in the cluster is set up correctly. 
 
 
 Step 8: Final Cluster MPI Test
