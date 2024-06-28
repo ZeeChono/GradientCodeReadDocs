@@ -70,7 +70,7 @@ Step 3: Configure and Launch Instances
       :height: 350px
       :align: center
 - Under the summary, input the number of instances you would like to instantiate, then click "Launch instance"
-- Goto instances dashboard and check their status, public ipv4 address, and then add a config file under the same folder
+- Goto instances dashboard and check their status, public ipv4 address
 
    .. image:: assets/EC2_dashboard.png
       :alt: Set the storage option
