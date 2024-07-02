@@ -106,6 +106,7 @@ This step is pretty much copy, paste and wait. By default, the AMI chosen at ste
 
    .. code-block:: 
 
+      sudo apt-get update
       sudo apt install python3-mpi4py
       sudo apt install python3-numpy
       sudo apt install python3-pandas
