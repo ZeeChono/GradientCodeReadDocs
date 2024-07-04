@@ -107,6 +107,7 @@ This step is pretty much copy, paste and wait. By default, the AMI chosen at ste
    .. code-block:: 
 
       sudo apt-get update
+      sudo apt install make
       sudo apt install python3-mpi4py
       sudo apt install python3-numpy
       sudo apt install python3-pandas
@@ -164,30 +165,14 @@ Then ssh into your instances, and create a similar config file under the .ssh fo
    .. code-block:: 
 
       Host w1
-        HostName ip-172-31-15-69.ca-central-1.compute.internal   # this should be the private ipv4 or dns name of your instance, which can be found on dashboard
+        HostName 172.31.15.69   # this should be the private ipv4 or dns name of your instance, which can be found on dashboard
         User ubuntu
         IdentityFile  ~/.ssh/first_instance.pem
 
       Host w2
-        HostName ip-172-31-13-65.ca-central-1.compute.internal
+        HostName 172.31.13.65
         User ubuntu
         IdentityFile ~/.ssh/first_instance.pem
-
-Secondly, we will have to modify the file **/etc/hosts**. Here's an example of how my file looks like on the master node. Update yours accordingly for each instance.
-
-   .. code-block:: 
-
-      127.0.0.1 localhost
-      172.31.15.69 w1         # input ipv4 private and the same name in the .ssh hostname
-      172.31.13.65 w2
-      
-      # The following lines are desirable for IPv6 capable hosts
-      ::1 ip6-localhost ip6-loopback
-      fe00::0 ip6-localnet
-      ff00::0 ip6-mcastprefix
-      ff02::1 ip6-allnodes
-      ff02::2 ip6-allrouters
-      ff02::3 ip6-allhosts
 
 Besides this, we should also enable TCP connection between these instances under the same **Network Security Group**. On dash board of the EC2, click Security Groups on the sidebar, this will bring you to the group we have just created in the step 2. Click "Edit inbound rules" after you enter the security group you created, add a new TCP rule as shown in the following screenshot.
 
@@ -210,6 +195,14 @@ Besides this, we should also enable TCP connection between these instances under
 **Notice that the source of your newly added Custom TCP rule should be constrained within your secutrity group, otherwise you are opening your all ports to the public internet which is dangerous.**
 
 After we have finished all the cluster settings, try manually ssh to each other node on each node, before mpirun command to ensure that the communication in the cluster is set up correctly. 
+
+
+**Note**: In case of the permission of bad .pem key error, try the following command:
+
+   .. code-block:: 
+
+      chmod 600 ~/.ssh/<your key name>.pem    # this modify the ssh key to read only
+
 
 
 Step 8: Final Cluster MPI Test
