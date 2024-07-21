@@ -16,8 +16,8 @@ Step 2: Project Configuration
 -----------------------------
 
 To make one's life easier, this project directory setup should follow as is shown in the screenshot below:
-..
-   Add tree image
+.. Add tree image
+
 .. image:: assets/8_network_setting1.png
       :alt: Inbound rule setting1
       :width: 600px
@@ -27,8 +27,7 @@ To make one's life easier, this project directory setup should follow as is show
 
 This project relies on the Makefile to build the project and start the simulation. There are several important parameters that the user 
 should understand:
-..
-   Add explaination of each param
+.. Add explaination of each param
 
 
 Step 3: Run the simulation
