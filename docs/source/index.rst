@@ -8,12 +8,11 @@ It relies on the Python scripting language and the support from the `mpi4py <htt
 This document consists of three sections:  
 
 - Introduction
-- Usage
-- Coding
+- Cluster setup
+- Run simulation
 
 
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+Check out the :doc:`cluster_setup` section for further information
 
 .. note::
 
@@ -25,5 +24,6 @@ Contents
 .. toctree::
 
    intro
-   usage
+   cluster_setup
+   run_simulation
    api
