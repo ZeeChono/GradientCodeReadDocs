@@ -1,7 +1,6 @@
-Usage
-=====
+Cluster Setup
+=============
 
-.. _installation:
 
 Step 1: Creating the AWS Root Account
 -------------------------------------
