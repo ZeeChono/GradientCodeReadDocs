@@ -112,7 +112,7 @@ Finally, if everything went well, one should be able to run the simulation witho
 
 .. code-block:: 
 
-    make naive
+    make naive    # you are encouraged to try other command as specified in the Makefile
 
 And a sample output on the terminal::
 
