@@ -39,12 +39,8 @@ should understand::
     
     # No. of stragglers you assumed for the simulation, usually useful for the exact gradient recovery schemes.
     N_STRAGGLERS=1
-    
-    # For partially coded version: how many pieces of workload will one worker be handling.
-    N_PARTITIONS=10
-    
-    # Switch to enable partial coded schemes: 1 means yes, and 0 means no
-    PARTIAL_CODED=0
+
+    ...
     
     # Path to folder containing the data folders: assume the base path is ~/
     DATA_FOLDER=dataset
@@ -104,7 +100,8 @@ On the master node, then we call the following script to set up a similar workin
 
 .. code-block:: 
 
-    source cluster_dir_setup.sh
+    source cluster_dir_setup.sh        # copy updated program code to each node
+    source cluster_dataset_setup.sh    # copy updated dataset directory to each node
 
 Step 5: Run the simulation
 --------------------------
