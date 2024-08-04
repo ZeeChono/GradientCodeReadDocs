@@ -47,7 +47,7 @@ Step 3: Configure and Launch Instances
       :width: 600px
       :height: 350px
       :align: center
-- Save the .pem key on your machine under **~/.ssh** 
+- Save the .pem key on your local machine under **~/.ssh** 
 
    .. image:: assets/5_instance.png
       :alt: Save ssh key pair
@@ -61,7 +61,7 @@ Step 3: Configure and Launch Instances
       :width: 300px
       :height: 400px
       :align: center
-- Storage Configuration, for free tier, you have 30 gb in total, free to modify it as you need
+- Storage Configuration, for free tier, you have 30 gb in total, free to modify it as you need. (But it may have the least storage requirement)
 
    .. image:: assets/7_instance.png
       :alt: Set the storage option
@@ -69,7 +69,7 @@ Step 3: Configure and Launch Instances
       :height: 350px
       :align: center
 - Under the summary, input the number of instances you would like to instantiate, then click "Launch instance"
-- Goto instances dashboard and check their status, public ipv4 address
+- Goto instances dashboard and you can check their status, public ipv4 address, CPU utilization etc.
 
    .. image:: assets/EC2_dashboard.png
       :alt: Set the storage option
@@ -80,7 +80,7 @@ Step 3: Configure and Launch Instances
 
 Step 4: Test ssh from Local to your Instances
 ---------------------------------------------
-First, let us configure the **~/.ssh/config** file with the .pem key we have downloaded in the last step. The host names here in the screenshot are the corresponding ipv4 address which can be found on the dashboard of EC2.
+First, let us configure the **~/.ssh/config** file with the .pem key we have downloaded in the last step. The host names here in the screenshot are the corresponding ipv4 address which can be found on the dashboard of EC2. (The AWS servers use dynamic public ipv4, you can pay to use static ipv4 as well)
 
    .. image:: assets/ssh_configfile.png
       :alt: SSH config file settings
@@ -119,7 +119,7 @@ Notice that this step is expected to be completed for **each of your instance**.
 
 Step 6: Test MPI Run for Each Instance
 --------------------------------------
-Create a hello_world.py python file for testing purpose.
+Create a **hello_world.py** python file for testing purpose.
 
    .. code-block:: 
 
@@ -144,22 +144,18 @@ Then in the terminal run:
 
       mpirun -np 1 python3 hello_world.py
 
-If no error is reported, this should ensure that you have all the required packages ready for the project.
+If no error is reported, you have all the required packages ready for the project.
 
 
 Step 7: Enable the Communication Among Instances
 ------------------------------------------------
-Similarly to what we have done in step 2, we are going to setup **~/.ssh** for each instance. We need to copy our .pem key file to each instance by calling the following command on your local PC:
+Similarly to what we have done in step 2, we are going to setup **~/.ssh** for the master instance. We need to copy our .pem key file to the master instance by calling the following command on your local PC:
 
    .. code-block:: 
 
-      scp ~/.ssh/<your key>.pem master:~/.ssh
-      scp ~/.ssh/<your key>.pem w1:~/.ssh
-      scp ~/.ssh/<your key>.pem w2:~/.ssh
+      scp [path to your key].pem master:~/.ssh
 
-   If you have more worker nodes, please go on
-
-Then ssh into your instances, and create a similar config file under the .ssh folder, here is an example of my master node .ssh/config file:
+Then ssh into your master node, and create a similar config file under the .ssh folder, here is an example of my master node .ssh/config file:
 
    .. code-block:: 
 
@@ -196,7 +192,7 @@ Besides this, we should also enable TCP connection between these instances under
 After we have finished all the cluster settings, try manually ssh to each other node on each node, before mpirun command to ensure that the communication in the cluster is set up correctly. 
 
 
-**Note**: In case of the permission of bad .pem key error, try the following command:
+**Note**: In case of the permission of bad .pem key error reported on the AWS server, try the following command:
 
    .. code-block:: 
 
