@@ -26,4 +26,3 @@ Contents
    intro
    cluster_setup
    run_simulation
-   api
