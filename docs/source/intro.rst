@@ -1,41 +1,9 @@
 Introduction
 ============
 
-Over the last years, high performance computing has become an
-affordable resource to many more researchers in the scientific
-community than ever before. The conjunction of quality open source
-software and commodity hardware strongly influenced the now widespread
-popularity of Beowulf_ class clusters and cluster of workstations.
+Gradient coding is a distributed computing technique aiming to provide robustness against slow or non-responsive computing nodes, known as stragglers, while balancing the computational load for responsive computing nodes. Among existing gradient codes, many iterations of algorithm upgrades have been seen and claimed that they are the best for targeted application scenarios. However, only little portion of the work has tried to bring this valuable techniques to real-world applications such as cloud distributed computation. In this project, we will set up a real-life cloud machine learning training application based on AWS services and apply the gradient coding idea to implementations. By inspiration from the work of Rashish Tandon and Qi Lei [Gradient-Coding]_. Moreover, this project further extends the evaluation metrics of the gradient coding from approximation error (theoretically) to more tangible metrics (model accuracy etc.), making the testing process more persuasive.
 
-Among many parallel computational models, message-passing has proven
-to be an effective one.  This paradigm is specially suited for (but
-not limited to) distributed memory architectures and is used in
-today's most demanding scientific and engineering application related
-to modeling, simulation, design, and signal processing.  However,
-portable message-passing parallel programming used to be a nightmare
-in the past because of the many incompatible options developers were
-faced to.  Fortunately, this situation definitely changed after the
-MPI Forum released its standard specification.
 
-High performance computing is traditionally associated with software
-development using compiled languages. However, in typical applications
-programs, only a small part of the code is time-critical enough to
-require the efficiency of compiled languages. The rest of the code is
-generally related to memory management, error handling, input/output,
-and user interaction, and those are usually the most error prone and
-time-consuming lines of code to write and debug in the whole
-development process.  Interpreted high-level languages can be really
-advantageous for this kind of tasks.
-
-For implementing general-purpose numerical computations, MATLAB [#]_
-is the dominant interpreted programming language. In the open source
-side, Octave and Scilab are well known, freely distributed software
-packages providing compatibility with the MATLAB language. In this
-work, we present MPI for Python, a new package enabling applications
-to exploit multiple processors using standard MPI "look and feel" in
-Python scripts.
-
-.. [#] MATLAB is a registered trademark of The MathWorks, Inc.
 
 
 What is MPI?
@@ -80,127 +48,10 @@ and can achieve a high degree of integration with other libraries
 written in compiled languages.
 
 
-Related Projects
-----------------
-
-As this work started and evolved, some ideas were borrowed from well
-known MPI and Python related open source projects from the Internet.
-
-* `OOMPI`_
-
-  + It has no relation with Python, but is an excellent object
-    oriented approach to MPI.
-
-  + It is a C++ class library specification layered on top of the C
-    bindings that encapsulates MPI into a functional class hierarchy.
-
-  + It provides a flexible and intuitive interface by adding some
-    abstractions, like *Ports* and *Messages*, which enrich and
-    simplify the syntax.
-
-* `Pypar`_
-
-  + Its interface is rather minimal. There is no support for
-    communicators or process topologies.
-
-  + It does not require the Python interpreter to be modified or
-    recompiled, but does not permit interactive parallel runs.
-
-  + General (*picklable*) Python objects of any type can be
-    communicated. There is good support for numeric arrays,
-    practically full MPI bandwidth can be achieved.
-
-* `pyMPI`_
-
-  + It rebuilds the Python interpreter providing a built-in module
-    for message passing. It does permit interactive parallel runs,
-    which are useful for learning and debugging.
-
-  + It provides an interface suitable for basic parallel programming.
-    There is not full support for defining new communicators or process
-    topologies.
-
-  + General (picklable) Python objects can be messaged between
-    processors. There is not support for numeric arrays.
-
-* `Scientific Python`_
-
-  + It provides a collection of Python modules that are
-    useful for scientific computing.
-
-  + There is an interface to MPI and BSP (*Bulk Synchronous Parallel
-    programming*).
-
-  + The interface is simple but incomplete and does not resemble
-    the MPI specification. There is support for numeric arrays.
-
-Additionally, we would like to mention some available tools for
-scientific computing and software development with Python.
-
-+ `NumPy`_ is a package that provides array manipulation and
-  computational capabilities similar to those found in IDL, MATLAB, or
-  Octave. Using NumPy, it is possible to write many efficient
-  numerical data processing applications directly in Python without
-  using any C, C++ or Fortran code.
-
-+ `SciPy`_ is an open source library of scientific tools for Python,
-  gathering a variety of high level science and engineering modules
-  together as a single package. It includes modules for graphics and
-  plotting, optimization, integration, special functions, signal and
-  image processing, genetic algorithms, ODE solvers, and others.
-
-+ `Cython`_ is a language that makes writing C extensions for the
-  Python language as easy as Python itself. The Cython language is
-  very close to the Python language, but Cython additionally supports
-  calling C functions and declaring C types on variables and class
-  attributes. This allows the compiler to generate very efficient C
-  code from Cython code. This makes Cython the ideal language for
-  wrapping for external C libraries, and for fast C modules that speed
-  up the execution of Python code.
-
-+ `SWIG`_ is a software development tool that connects programs
-  written in C and C++ with a variety of high-level programming
-  languages like Perl, Tcl/Tk, Ruby and Python. Issuing header files
-  to SWIG is the simplest approach to interfacing C/C++ libraries from
-  a Python module.
-
-
-
-.. External Links
-.. ..............
-
-.. _MPI:       https://www.mpi-forum.org/
-
-.. _MPICH:     https://www.mpich.org/
-
-.. _Open MPI:  https://www.open-mpi.org/
-
-.. _Beowulf:   https://www.beowulf.org/
-
-
-.. _Python:    https://www.python.org/
-
-.. _NumPy:     https://numpy.org/
-
-.. _SciPy:     https://scipy.org/
-
-.. _Cython:    https://cython.org/
-
-.. _SWIG:      https://www.swig.org/
-
-
-.. _OOMPI:     https://web.archive.org/web/20100614170656/http://www.osl.iu.edu/research/oompi/overview.php
-
-.. _Pypar:     https://github.com/daleroberts/pypar
-
-.. _pyMPI:     https://sourceforge.net/projects/pympi/
-
-.. _Scientific Python:
-               http://dirac.cnrs-orleans.fr/ScientificPython.html
-
-
 .. References
 .. ..........
+
+.. [Gradient-Coding] Tandon, R., Lei, Q., Dimakis, A. G., & Karampatziakis, N. (2016). Gradient coding. arXiv preprint arXiv:1612.03301.
 
 .. [mpi-std1] MPI Forum. MPI: A Message Passing Interface Standard.
    International Journal of Supercomputer Applications, volume 8,
