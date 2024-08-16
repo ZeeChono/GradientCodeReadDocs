@@ -9,7 +9,7 @@ Gradient coding is a distributed computing technique aiming to provide robustnes
 What is MPI?
 ------------
 
-MPI_, [mpi-using]_ [mpi-ref]_ the *Message Passing Interface*, is a
+MPI, [mpi-using]_ [mpi-ref]_ the *Message Passing Interface*, is a
 standardized and portable message-passing system designed to function
 on a wide variety of parallel computers. The standard defines the
 syntax and semantics of library routines and allows users to write
@@ -20,13 +20,13 @@ Since its release, the MPI specification [mpi-std1]_ [mpi-std2]_ has
 become the leading standard for message-passing libraries for parallel
 computers.  Implementations are available from vendors of
 high-performance computers and from well known open source projects
-like MPICH_ [mpi-mpich]_ and `Open MPI`_ [mpi-openmpi]_.
+like MPICH [mpi-mpich]_ and `Open MPI` [mpi-openmpi]_.
 
 
 What is Python?
 ---------------
 
-Python_ is a modern, easy to learn, powerful programming language. It
+Python is a modern, easy to learn, powerful programming language. It
 has efficient high-level data structures and a simple but effective
 approach to object-oriented programming with dynamic typing and
 dynamic binding. It supports modules and packages, which encourages
