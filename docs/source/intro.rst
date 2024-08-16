@@ -5,7 +5,7 @@ Gradient coding is a distributed computing technique aiming to provide robustnes
 
 **keywords:** Gradient Coding, Distributed computation, MPI protocol, Python4mpi;
 
-**encoding schemes:** FRC, CRC, BIBD, SPG
+**encoding schemes:** FRC(Full repetition code), CRC(Cyclic repetition code), BIBD(Balanced incomplete block design), SPG(Sparse Gradient Code)
 
 
 What is MPI?
