@@ -65,11 +65,13 @@ gradients:
 .. References
 .. ..........
 
-.. [1] Li, L., Fan, Y., Tse, M., & Lin, K. Y. (2020). A review of applications in federated learning. Computers & Industrial Engineering, 149, 106854.
+.. [1] Li, L., Fan, Y., Tse, M., & Lin, K. Y. (2020). A review of applications in federated learning. 
+   Computers & Industrial Engineering, 149, 106854.
 
-.. [2] T. Hoefler, T. Schneider, and A. Lumsdaine, “Characterizing the influence of system noise on large-scale applications by simulation,” in Proc.of the ACM/IEEE Int. Conf. for High Perf. Comp., Networking, Storage and Analysis, 2010, pp. 1–11.
+.. [2] T. Hoefler, T. Schneider, and A. Lumsdaine, “Characterizing the influence of system noise on 
+   large-scale applications by simulation,” in Proc.of the ACM/IEEE Int. Conf. for High Perf. Comp., Networking, Storage and Analysis, 2010, pp. 1–11.
 
-.. [3] J. Dean and L. A. Barroso, “The tail at scale,” Commun. ACM, vol. 56,
-no. 2, pp. 74–80, Feb 2013.
+.. [3] J. Dean and L. A. Barroso, “The tail at scale,” Commun. ACM, vol. 56, no. 2, pp. 74–80, Feb 2013.
 
-.. [4] Tandon, R., Lei, Q., Dimakis, A. G., & Karampatziakis, N. (2016). Gradient coding. arXiv preprint arXiv:1612.03301.
+.. [4] Tandon, R., Lei, Q., Dimakis, A. G., & Karampatziakis, N. (2016). Gradient coding. arXiv preprint 
+   arXiv:1612.03301.
