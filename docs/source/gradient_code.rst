@@ -4,7 +4,7 @@ Gradient Coding
 In many Machine Learning applications nowadays, the size of training datasets
 has grown significantly over the years to the point that it
 is becoming crucial to implement learning algorithms in a
-distributed fashion (federated learning)[1]_. Usually, the distributed learning is setup by creating a cluster
+distributed fashion (federated learning) [1]_. Usually, the distributed learning is setup by creating a cluster
 and the central node(or master node) will split the big dataset in to multiple partitions. Then after central node broadcasting the data, 
 each device trains the model on its assigned data partition and only shares the model updates (like gradients) with a central server. 
 The server then aggregates these updates to improve the global model. One can see that this learning system would have advantageous 
@@ -16,10 +16,10 @@ Motivation
 ----------
 In practice the gains due to parallelization are often limited due to stragglers – workers
 that are slowed down due to unpredictable factors such asnetwork latency, cpu utilization or computational 
-complexity etc.[2]_[3]_ That's where it is fabulous that Rashish and Qi brought up this creative idea to apply
+complexity etc. [2]_ [3]_ That's where it is fabulous that Rashish and Qi brought up this creative idea to apply
 a theoretic framework for mitigating stragglers in distributed learning. 
 
-In the study[4]_, the authors have shown that the AWS EC2 machines could be as 10 times slower than normal case.
+In the study [4]_, the authors have shown that the AWS EC2 machines could be as 10 times slower than normal case.
 So it is necessary to implement some data recovery mechanisms during the distributed learning process.
 
 .. image:: intro/straggler_statistics.png
@@ -29,8 +29,8 @@ So it is necessary to implement some data recovery mechanisms during the distrib
       :align: center
 
 
-Mechanisms[4]_
---------------
+Mechanisms [4]_
+---------------
 In Rashish's work, they focuses mainly on how to recover the returned partial gradients from each worker device. The problem
 is generalized into two matrix: encoding matrix B and decoding matrix A. Imagine we have n workers and k data partitions:
 
