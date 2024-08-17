@@ -25,5 +25,7 @@ Contents
 
    intro
    gradient_code
+   experiment_setup
+   result
    cluster_setup
    run_simulation
