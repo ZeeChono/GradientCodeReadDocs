@@ -1,0 +1,119 @@
+Gradient Coding
+===============
+
+In many Machine Learning applications nowadays, the size of training datasets
+has grown significantly over the years to the point that it
+is becoming crucial to implement learning algorithms in a
+distributed fashion (federated learning)[1]. Usually, the distributed learning is setup by creating a cluster
+and the central node(or master node) will split the big dataset in to multiple partitions. Then after central node broadcasting the data, 
+each device trains the model on its assigned data partition and only shares the model updates (like gradients) with a central server. 
+The server then aggregates these updates to improve the global model. One can see that this learning system would have advantageous 
+training acceleration compared to the traditional training under big dataset, since the pressure to train is splitted over
+the cluster.
+
+
+Motivation
+----------
+In practice the gains due to parallelization are often limited due to stragglers – workers
+that are slowed down due to unpredictable factors such asnetwork latency, cpu utilization or computational 
+complexity etc.[2][3] That's where it is fabulous that Rashish and Qi brought up this creative idea to apply
+a theoretic framework for mitigating stragglers in distributed learning. 
+
+In the study[4], the authors have shown that the AWS EC2 machines could be as 10 times slower than normal case.
+So it is necessary to implement some data recovery mechanisms during the distributed learning process.
+
+.. image:: intro/straggler_statistics.png
+      :alt: Average measured communication times for a vector of dimension p = 500000 using n = 50 t2.micro worker machines (and a c3.8xlarge master machine). Error bars indicate one standard deviation.
+      :width: 400px
+      :height: 400px
+      :align: center
+
+
+Mechanisms[4]
+-------------
+In Rashish's work, they focuses mainly on how to recover the returned partial gradients from each worker device. The problem
+is generalized into two matrix: encoding matrix B and decoding matrix A. Imagine we have n workers and k data partitions:
+
+.. math::
+
+   AB = 1_{f \times k}
+
+where f denotes the number of combinations of surviving workers/non-stragglers, :math:`1_{f \times k}` is the all 1s matrix of 
+dimension :math:`f \times k`, and we have matrices :math:`A \in R^{f \times n}, B \in R^{n \times k}`.
+We interpret the i-th row of B, :math:`bi`, to be the data assignment of worker i. The support of :math:`bi` corresponds
+to the data partitions that the worker Wi has access to, and the entries of :math:`bi` encode a linear combination over 
+their gradients that worker Wi transmits. Let :math:`g \in R^{k \times d}`, where d is the dimension of the gradient, be
+a matrix with each row being the partial gradient of a data partition i.e.
+
+.. math::
+
+   \bar{g} = [g1,g2,...gk]^T
+
+Then it's easy to see that the worker Wi transmits :math:`bi \bar{g}`. Notice that each worker computes a linear combination
+of partital gradient and return it back to the master node. 
+
+Now, since we have all possible decoding vectors stored as the rows in matrix A (Though it is more common to comput the
+decoding vector in real-time). We can easily recover the full-gradient by doing dot product of decoding vector to the returned
+gradients:
+
+.. math::
+
+   a_{i} B \bar{g} = [1,1,...,1] \bar{g} = (\sum_{i=1}^{k} g_{j})^T
+
+
+
+
+
+Related Works
+-------------
+
+MPI, [mpi-using]_ [mpi-ref]_ the *Message Passing Interface*, is a
+standardized and portable message-passing system designed to function
+on a wide variety of parallel computers. The standard defines the
+syntax and semantics of library routines and allows users to write
+portable programs in the main scientific programming languages
+(Fortran, C, or C++).
+
+Since its release, the MPI specification [mpi-std1]_ [mpi-std2]_ has
+become the leading standard for message-passing libraries for parallel
+computers.  Implementations are available from vendors of
+high-performance computers and from well known open source projects
+like MPICH [mpi-mpich]_ and `Open MPI` [mpi-openmpi]_.
+
+
+What is Python?
+---------------
+
+Python is a modern, easy to learn, powerful programming language. It
+has efficient high-level data structures and a simple but effective
+approach to object-oriented programming with dynamic typing and
+dynamic binding. It supports modules and packages, which encourages
+program modularity and code reuse. Python's elegant syntax, together
+with its interpreted nature, make it an ideal language for scripting
+and rapid application development in many areas on most platforms.
+
+The Python interpreter and the extensive standard library are
+available in source or binary form without charge for all major
+platforms, and can be freely distributed. It is easily extended with
+new functions and data types implemented in C or C++. Python is also
+suitable as an extension language for customizable applications.
+
+Python is an ideal candidate for writing the higher-level parts of
+large-scale scientific applications [Hinsen97]_ and driving
+simulations in parallel architectures [Beazley97]_ like clusters of
+PC's or SMP's. Python codes are quickly developed, easily maintained,
+and can achieve a high degree of integration with other libraries
+written in compiled languages.
+
+
+.. References
+.. ..........
+
+.. [1] Li, L., Fan, Y., Tse, M., & Lin, K. Y. (2020). A review of applications in federated learning. Computers & Industrial Engineering, 149, 106854.
+
+.. [2] T. Hoefler, T. Schneider, and A. Lumsdaine, “Characterizing the influence of system noise on large-scale applications by simulation,” in Proc.of the ACM/IEEE Int. Conf. for High Perf. Comp., Networking, Storage and Analysis, 2010, pp. 1–11.
+
+.. [3] J. Dean and L. A. Barroso, “The tail at scale,” Commun. ACM, vol. 56,
+no. 2, pp. 74–80, Feb 2013.
+
+.. [4] Tandon, R., Lei, Q., Dimakis, A. G., & Karampatziakis, N. (2016). Gradient coding. arXiv preprint arXiv:1612.03301.

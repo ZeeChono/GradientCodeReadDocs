@@ -24,5 +24,6 @@ Contents
 .. toctree::
 
    intro
+   gradient_code
    cluster_setup
    run_simulation
