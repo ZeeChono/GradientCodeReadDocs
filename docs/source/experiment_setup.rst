@@ -10,11 +10,12 @@ Cluster model
 -------------
 One image describing how the cluster looks is shown in the figure below:
 
-.. image:: setup/cluster_demo.png
-      :alt: Cluster example
-      :width: 400px
-      :height: 300px
-      :align: center
+    .. image:: setup/cluster_demo.png
+        :alt: Cluster example
+        :width: 400px
+        :height: 300px
+        :align: center
+
 We implemented all communication methods (send model parameters etc.) using
 MPI4py [2]_ . It is a powerful python package that enable one to program MPI related function in python.
 Based on the MPI protocol design, every worker node talks to the master node bidirectionally during 
@@ -24,11 +25,11 @@ run partial training.
 
 Each iteration of training has the following process:
 
-.. image:: setup/learning_proc.png
-      :alt: Cluster example
-      :width: 400px
-      :height: 180px
-      :align: center
+    .. image:: setup/learning_proc.png
+        :alt: Cluster example
+        :width: 400px
+        :height: 180px
+        :align: center
 
 To recover Rashish's result with minimum deviation, our cluster adopts same type of server nodes, namely:
 master - c5a.8xlarge and worker - t2.micro. We ran the various approaches to train logistic regression
