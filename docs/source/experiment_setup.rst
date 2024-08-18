@@ -43,6 +43,9 @@ Python scripts explain
 ----------------------
 Major scripts role explaination:
 
+* **Makefie**  
+  The make script to modify user-specified parameters to configure tests.
+
 * **main.py**  
   The entry point to run various encoding schemes and tests.
 
@@ -70,10 +73,51 @@ Major scripts role explaination:
 
 Dataset and processing
 ----------------------
+The details of datasets and models used in our experiments are listed in Table 1. We used the Amazon
+Employee Access (Amazon) [3]_ and Forest Covertype (Covertype) [4]_ datasets for logistic regression tasks.
+The reason that we adopt the 2nd dataset is that the Amazon dataset does not have a balanced class 
+distribution (0.94:0.6), so the accuracy of the trained model would not be a strong evidence for our
+experiments. The Covertype dataset, however, has a perfect ratio of 0.57:0.43 which is more preferable
+to use model accuracy to interpret the contribution of training. Both dataset are processed through 
+one-hot encoding of the input. One is welcome to read the code **src/arrange_real_data.py** to find out
+what preprocessing procedure we have taken.
+
++------------+--------------------+-------------------+
+| Dataset    | Amazon             | Covertype         |
++============+====================+===================+
+| # Training data points | 26215     | 198056         |
++------------+--------------------+-------------------+
+| Model      | logistic           | logistic          |
++------------+--------------------+-------------------+
+| Dimension  | 241915             | 15092             |
++------------+--------------------+-------------------+
+| Training Iteration | 100        | 1000              |
++------------+--------------------+-------------------+
 
 
 Choices of Evaluation
 ---------------------
+In this project, we have three evaluation metrics:
+
+* **Average time per iteration**  
+  The average training time per iteration; core metrics to see if our encoding scheme's overhead effect on time cost.
+
+* **AUC**  
+  Area under the ROC curve, it tells the ability of the model's discrimination from two classes, common for binary classification task.
+  
+* **ACC**  
+  Accuracy of the trained model, the most common metric in machine learning field.
+
+The reason that we adopt ACC in addition to AUC is that accuracy is normally the most intuitive indication of the 
+model's performance. [1]_ only considers AUC since Amazon dataset is extremely unbalanced. The comparison of AUC 
+and ACC can be found in the figure below:
+
+    .. image:: setup/AUCvsACC.png
+        :alt: AUCvsACC
+        :width: 400px
+        :height: 150px
+        :align: center
+
 
 
 .. References
@@ -85,3 +129,5 @@ Choices of Evaluation
    Cosimo, Alejandro. Parallel distributed computing using
    python. Advances in Water Resources, 34(9):1124 – 1139,
    2011. New Computational Methods and Software Tools.
+.. [3] https://www.kaggle.com/competitions/amazon-employee-access-challenge/rules
+.. [4] https://archive.ics.uci.edu/dataset/31/covertype
