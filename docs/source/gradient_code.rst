@@ -112,11 +112,11 @@ The encoding matrix of FRC is defined as the following: (s stands for the number
 
 .. math::
     B_{block}(n,s) = \begin{bmatrix}
-              1_{1 \times (s+1)}& 0_{1 \times (s+1)}& ...& 0_{1 \times (s+1)} \\
-              0_{1 \times (s+1)}& 1_{1 \times (s+1)}& ...& 0_{1 \times (s+1)} \\
-              ... & ... & ... & ...\\
-              0_{1 \times (s+1)}& 0_{1 \times (s+1)}& ...& 1_{1 \times (s+1)}
-              \end{bmatrix}_{n/(s+1) \times n},
+                     1_{1 \times (s+1)}& 0_{1 \times (s+1)}& ...& 0_{1 \times (s+1)} \\
+                     0_{1 \times (s+1)}& 1_{1 \times (s+1)}& ...& 0_{1 \times (s+1)} \\
+                     ... & ... & ... & ...\\
+                     0_{1 \times (s+1)}& 0_{1 \times (s+1)}& ...& 1_{1 \times (s+1)}
+                     \end{bmatrix}_{n/(s+1) \times n},
 
 The :math:`B_{block}` is a diagonal sequence of 1 matrix that repeatedly constructed the encoding matrix :math:`B_{FRC}`.
 The idea is to repeat every data partition s+1 times given at most s stragglers so it is possible to always fully recover
@@ -124,6 +124,7 @@ the total gradient by doing linear combination.
 
 
 CRC on the other hand, adopts the same idea. However, it does not need n to be divisible by s+1:
+
 .. math::
     B_{CRC} = \begin{bmatrix}
               * & * & ... & * & 0 & 0 & ... & 0 \\
@@ -133,6 +134,7 @@ CRC on the other hand, adopts the same idea. However, it does not need n to be d
               ... & ... & ... & ... & ... & ... & ... & ... \\
               * & ... & * & 0 & 0 & ... & 0 & * 
               \end{bmatrix}_{n \times n},
+
 where * indicates non-zero entries in :math:`B_{CRC}`. This gradient coding scheme is more flexible to construct at encoding
 stage, at the expense of solving the decoding vector in real-time each iteration. Due to the non-binary entries in :math:`B_{CRC}`,
 the time it cost to compute decoding vector might be a drawback of the system.
