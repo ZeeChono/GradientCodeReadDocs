@@ -34,7 +34,7 @@ stragglers severely impact latency, as the performance in each iteration is dete
 Mechanisms [4]_
 ---------------
 In Rashish's work, they focuses mainly on how to recover the returned partial gradients from each worker device. The problem
-is generalized into two matrix: encoding matrix B and decoding matrix A. Imagine we have n workers and k data partitions:
+is generalized into two matrices: encoding matrix B and decoding matrix A. Imagine we have n workers and k data partitions:
 
 .. math::
 
@@ -86,7 +86,61 @@ gradient coding scheme is robust to any one straggler.
 Related Works
 -------------
 
-haha
+Before gradient coding
+~~~~~~~~~~~~~~~~~~~~~~
+The closest work to the idea of gradient coding is of [6]_ where Lee et al. used coding theory and treating stragglers 
+as erasures in the transmission of the computed results. In contrast to Rashish's focus on codes for recovery of partial
+gradients of any loss function, Lee addressed the straggler problem through techniques like: data shuffling and matrix
+multiplication to solve erasures caused by straggling. Further closely, Li et al. [7]_ have shown how coding can be used 
+for distributed MapReduce and how to trade off communication and computation.
+
+
+Exact gradient coding
+~~~~~~~~~~~~~~~~~~~~~
+In the work where Rashnish and Qi brought up the idea of gradient coding, they also defined and tested two exact gradient
+coding schemes namely: Fractional Repetition Scheme(FRC), Cyclic Repetition Scheme(CRC). We classify these two as the 
+same category because their goals are fully recovering the exact total gradient at each iteration of learning.
+The encoding matrix of FRC is defined as the following: (s stands for the number of stragglers)
+
+.. math::
+    B_{FRC} = \begin{bmatrix}
+              B_{block}^{(1)} \\
+              B_{block}^{(2)} \\
+              ...\\
+              B_{block}^{(s+1)}
+              \end{bmatrix}_{n \times n}, where
+
+.. math::
+    B_{block}(n,s) = \begin{bmatrix}
+              1_{1 \times (s+1)}& 0_{1 \times (s+1)}& ...& 0_{1 \times (s+1)} \\
+              0_{1 \times (s+1)}& 1_{1 \times (s+1)}& ...& 0_{1 \times (s+1)} \\
+              ... & ... & ... & ...\\
+              0_{1 \times (s+1)}& 0_{1 \times (s+1)}& ...& 1_{1 \times (s+1)}
+              \end{bmatrix}_{n/(s+1) \times n},
+
+The :math:`B_{block}` is a diagonal sequence of 1 matrix that repeatedly constructed the encoding matrix :math:`B_{FRC}`.
+The idea is to repeat every data partition s+1 times given at most s stragglers so it is possible to always fully recover
+the total gradient by doing linear combination.
+
+
+CRC on the other hand, adopts the same idea. However, it does not need n to be divisible by s+1:
+.. math::
+    B_{CRC} = \begin{bmatrix}
+              * & * & ... & * & 0 & 0 & ... & 0 \\
+              0 & * & * & ... & * & 0 & ... & 0 \\
+              ... & ... & ... & ... & ... & ... & ... & ... \\
+              0 & 0 & ... & 0 & * & * & ... & * \\
+              ... & ... & ... & ... & ... & ... & ... & ... \\
+              * & ... & * & 0 & 0 & ... & 0 & * 
+              \end{bmatrix}_{n \times n},
+where * indicates non-zero entries in :math:`B_{CRC}`. This gradient coding scheme is more flexible to construct at encoding
+stage, at the expense of solving the decoding vector in real-time each iteration. Due to the non-binary entries in :math:`B_{CRC}`,
+the time it cost to compute decoding vector might be a drawback of the system.
+
+
+Approximate gradient coding
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 .. References
 .. ..........
@@ -105,3 +159,16 @@ haha
 .. [5] E. Jonas, Q. Pu, S. Venkataraman, I. Stoica, and B. Recht, “Occupy the
    cloud: Distributed computing for the 99%,” in Proceedings of the 2017
    Symposium on Cloud Computing, ser. SoCC ’17, 2017, pp. 445–451.
+
+.. [6] Lee, Kangwook, Lam, Maximilian, Pedarsani, Ramtin,
+   Papailiopoulos, Dimitris S., and Ramchandran, Kannan. Speeding up distributed machine learning using
+   codes. CoRR, abs/1512.02673, 2015. URL http:
+   //arxiv.org/abs/1512.02673.
+
+.. [7] Li, S., Maddah-Ali, M. A., and Avestimehr, A. S. Coded
+   mapreduce. In 2015 53rd Annual Allerton Conference
+   on Communication, Control, and Computing (Allerton),
+   pp. 964–971, Sept 2015. doi: 10.1109/ALLERTON.2015.
+   7447112.
+
+
