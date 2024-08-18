@@ -142,6 +142,33 @@ the time it cost to compute decoding vector might be a drawback of the system.
 
 Approximate gradient coding
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Swanand et al. [8]_ stated in their work about two major limitations of the exact gradient coding scheme:
+First, exact gradient coding require heavy computational and storage overhead at each worker. 
+In particular, in [4]_ , it was established that any coding scheme designed to tolerate S stragglers must have
+L ≥ K(S + 1)/N (L is how many data partitions loaded to each worker, K is total data partitions, N is number of workers).
+This implies that the higher the straggler tolerance required, the larger is the computation and storage
+overhead per worker. 
+Second, since the schemes are designed for a particular number of stragglers S, it is necessary to have an 
+estimate on S at the design time. This is not feasible for many practical schemes as straggler behavior can vary
+unpredictably.
+
+Approximate grdient coding, as the name suggest, are the coding schemes that would recover the total gradient approximately. Indeed, 
+in many practical learning algorithms, it is sufficient to approximately reconstruct the gradient sum. By the idea of
+stochastic gradient descent, adding some noise to the gradient might help the model update in a better direction.
+These approximate gradient codes do not require to have an estimate of the number of stragglers S a priori, 
+and allow the computation and storage overhead per worker to be substantially small.
+
+By proposing the gradient coding using balanced incomplete block designs(BIBD) incidence matrix as the encoding matrix,
+Swanand showed that approximation error for these codes depends only on the number of stragglers, and not on which
+specific set of workers is straggling (Due to the nature of the BIBD matrices, any straggling pattern would cause
+similar effect). Therefore, the decoding vector at the master node can be computed in closed-form and save a lot of time.
+Through the work, they have shown the symmetric BIBDs are excellent candidates for approximate gradient code.
+
+
+Moreover, Rashish in another work collaborating with Netanel [9]_ , have approached to the approximate gradient code based on 
+normalized adjacency matrices of expander graphs. And our lab member is working on a sparse gaussian gradient code to
+mimic the effect of BIBD by equalizing the expectation value, aiming to solve the rarity of the BIBD matrices 
+(BIBD's existence is limited).
 
 
 .. References
@@ -173,4 +200,9 @@ Approximate gradient coding
    pp. 964–971, Sept 2015. doi: 10.1109/ALLERTON.2015.
    7447112.
 
+.. [8] Kadhe, S., Koyluoglu, O. O., & Ramchandran, K. (2019, July). Gradient coding based on block designs for 
+   mitigating adversarial stragglers. In 2019 IEEE International Symposium on Information Theory (ISIT) (pp. 2813-2817). IEEE.
+
+.. [9] Raviv, N., Tandon, R., Dimakis, A., & Tamo, I. (2018, July). Gradient coding from cyclic MDS codes and 
+   expander graphs. In International Conference on Machine Learning (pp. 4305-4313). PMLR.
 
