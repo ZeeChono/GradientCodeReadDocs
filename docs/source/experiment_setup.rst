@@ -13,7 +13,7 @@ One image describing how the cluster looks is shown in the figure below:
     .. image:: setup/cluster_demo.png
         :alt: Cluster example
         :width: 400px
-        :height: 300px
+        :height: 200px
         :align: center
 
 We implemented all communication methods (send model parameters etc.) using
@@ -77,22 +77,22 @@ The details of datasets and models used in our experiments are listed in Table 1
 Employee Access (Amazon) [3]_ and Forest Covertype (Covertype) [4]_ datasets for logistic regression tasks.
 The reason that we adopt the 2nd dataset is that the Amazon dataset does not have a balanced class 
 distribution (0.94:0.6), so the accuracy of the trained model would not be a strong evidence for our
-experiments. The Covertype dataset, however, has a perfect ratio of 0.57:0.43 which is more preferable
+experiments. The Covertype dataset, however, has a perfect ratio of （0.57:0.43） which is more preferable
 to use model accuracy to interpret the contribution of training. Both dataset are processed through 
 one-hot encoding of the input. One is welcome to read the code **src/arrange_real_data.py** to find out
 what preprocessing procedure we have taken.
 
-+------------+--------------------+-------------------+
-| Dataset    | Amazon             | Covertype         |
-+============+====================+===================+
-| # Training data points | 26215     | 198056         |
-+------------+--------------------+-------------------+
-| Model      | logistic           | logistic          |
-+------------+--------------------+-------------------+
-| Dimension  | 241915             | 15092             |
-+------------+--------------------+-------------------+
-| Training Iteration | 100        | 1000              |
-+------------+--------------------+-------------------+
++------------------------+--------------------+-------------------+
+| Dataset                | Amazon             | Covertype         |
++========================+====================+===================+
+| # Training data points | 26215              | 198056            |
++------------------------+--------------------+-------------------+
+| Model                  | logistic           | logistic          |
++------------------------+--------------------+-------------------+
+| Dimension              | 241915             | 15092             |
++------------------------+--------------------+-------------------+
+| Training Iteration     | 100                | 1000              |
++------------------------+--------------------+-------------------+
 
 
 Choices of Evaluation
