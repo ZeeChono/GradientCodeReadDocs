@@ -115,7 +115,7 @@ and ACC can be found in the figure below:
     .. image:: setup/AUCvsACC.png
         :alt: AUCvsACC
         :width: 400px
-        :height: 150px
+        :height: 200px
         :align: center
 
 

@@ -1,7 +1,17 @@
 Introduction
 ============
 
-Gradient coding is a distributed computing technique aiming to provide robustness against slow or non-responsive computing nodes, known as stragglers, while balancing the computational load for responsive computing nodes. Among existing gradient codes, many iterations of algorithm upgrades have been seen and claimed that they are the best for targeted application scenarios. However, only a little of the work has tried to bring these valuable techniques to real-world applications such as cloud-distributed computation. In this project, we will set up a real-life cloud machine learning training application based on AWS services and apply the gradient coding idea to implementations. By inspiration from the work of Rashish Tandon and Qi Lei [Gradient-Coding]_, we will first reproduce their existing results of exact recovery gradient code (FRC, CRC) to understand the logics. Moreover, this project further extends the evaluation metrics of the gradient coding from approximation error (theoretically) to more tangible metrics (model accuracy etc.), making the testing process more persuasive.
+Gradient coding is a distributed computing technique aiming to provide robustness against slow or non-responsive 
+computing nodes, known as stragglers, while balancing the computational load for responsive computing nodes. 
+Among existing gradient codes, many iterations of algorithm upgrades have been seen and claimed that they 
+are the best for targeted application scenarios. However, only a little of the work has tried to bring these 
+valuable techniques to real-world applications such as cloud-distributed computation. In this project, we will 
+set up a real-life cloud machine learning training application based on AWS services and apply the gradient 
+coding idea to implementations. By inspiration from the work of Rashish Tandon and Qi Lei [Gradient-Coding]_, 
+we will first reproduce their existing results of exact recovery gradient code (FRC, CRC) to understand the 
+logics. Moreover, this project further extends the evaluation metrics of the gradient coding from approximation 
+error (theoretically) to more tangible metrics (model accuracy etc.), making the testing process more persuasive.
+Finally, we will finish a fully customized testing suite to help researchers to test any gradient coding algorithms.
 
 **keywords:** Gradient Coding, Distributed computation, MPI protocol, Python4mpi;
 
