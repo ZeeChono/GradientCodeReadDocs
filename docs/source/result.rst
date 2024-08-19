@@ -22,7 +22,7 @@ is similar to the original work. However, since ignore version will discard the 
 cannot guarantee to reproduce the exact final result as shown in the original work. In fact, throughout our tests,
 we failed to have one test of ignore version with final AUC value at around 0.84. But one can verify, that certain
 inflection points on the curve corresponding to the timestamp are around the same between the two images as for
- FRC and CRC coded version.
+FRC and CRC coded version.
 
     .. image:: result/reproduction_avgtime.png
         :alt: reproduction_avgtime
