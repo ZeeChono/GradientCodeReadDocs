@@ -171,6 +171,24 @@ mimic the effect of BIBD by equalizing the expectation value, aiming to solve th
 (BIBD's existence is limited).
 
 
+Goal
+----
+The main goal of this project is to create a universal and automated testing suite for the researchers to try out
+their gradient coding ideas. By the help of modern OOP programming language Python and AWS cloud services, we should
+be able to do this. The model is straight forward, our python scripts will ask the user to provide gradient code 
+encoding matrix and possible decoding vector. After providing the dataset and number of the worker nodes in a cluster,
+our testing suite should be able to carry the tests multiple times, at the willing of the user, and then produce the 
+output as the evaluation metrics over iteration or over time. The model is shown below:
+
+   .. image:: intro/model.png
+      :alt: model
+      :width: 400px
+      :height: 300px
+      :align: center
+
+Though the process is quite automatic, it does not exclude the cutomizability from the user, as the user have the 
+freedom to configure the encoding and decoding rule (exact or non-exact) of the test at the first place.
+
 .. References
 .. ..........
 
