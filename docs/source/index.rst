@@ -7,12 +7,13 @@ This document describes the basic AWS EC2 cluster work flow setup for the Gradie
 It relies on the Python scripting language and the support from the `mpi4py <https://mpi4py.readthedocs.io/en/stable/index.html>`_. 
 This document consists of three sections:  
 
-- Introduction
+- Report
 - Cluster setup
 - Run simulation
 
 
-Check out the :doc:`cluster_setup` section for further information
+Check out the :doc:`cluster_setup` section for further information on AWS setup,
+and checkout to the :doc:`run_simulation` section for how to run the code.
 
 .. note::
 

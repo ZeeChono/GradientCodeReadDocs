@@ -40,9 +40,54 @@ In summary, it is believed that this project has similar ground performance with
 build more tests and comparisons on top of it.
 
 
-Comparison
-----------
+BIBD vs SPG vs Uncoded
+----------------------
+This section compares the full evalutation metrics over BIBD, SPG and uncoded scenarios.
+This set of test is run agains the Amazon dataset for 100 iteration per round, in total of 42 rounds.
+Note that whenever there's a bad data due to AWS server down and totally unrecoverable, it is represented as 0 in chart.
 
+The first figure demonstrates the average training time per iteration, where at first three versions have similar
+average iteration time and the BIBD outperforms a little from round 10 to 20. However, as the round increases and much
+compuatational burden is put on to the cluster, we can see that the approximate gradient code BIBD and SPG maintain
+a reasonable performance as before, while uncoded cluster suffers from the high latency each round.
+This gives us huge confidence on the gradient code when the network congestion or abnormal latency happens.
+
+    .. image:: result/bibd_spg_avgtime.png
+        :alt: reproduction_avgtime
+        :width: 400px
+        :height: 200px
+        :align: center
+
+The second figure suggests that both BIBD and SPG gradient code's resilience to straggling are coming from the expense
+at model performance. We can see that BIBD and SPG's model AUC fluctuate at each round but overall stay near the 
+uncoded baseline. No outperforming is observed in this test.
+
+    .. image:: result/bibd_spg_auc.png
+        :alt: reproduction_auc
+        :width: 400px
+        :height: 200px
+        :align: center
+
+The third figure shows that for the Amazon dataset, the approximate gradient code like BIBD and SPG do not significantly
+affect the accuracy of the model. It is partially due to the extreme unbalanced dataset. But it is worth stating that 
+gradient code maybe preferred in this case to trade model accuracy to the training time.
+
+    .. image:: result/bibd_spg_acc.png
+        :alt: reproduction_auc
+        :width: 400px
+        :height: 200px
+        :align: center
+
+
+Conclusion
+----------
+In this project, we have experimented with various gradient coding ideas on Amazon EC2 instances. 
+This is a complex trade-off space between model sizes, number of workers, worker configurations, and final performances. 
+We are glad to see that the proposed SPG coding from our lab achieves similar effect to the BIBD encoding, while SPG 
+has more flexibility than BIBD. Moreover, this universal test pipeline would be helpful for any determined researcher
+to try out their ideas with standardized and also real-life machine learning training application.
+The main benefit of the gradient code is fault tolerance, as the big data is becoming common, we are hoping to see more
+creative ideas emerging from the coding theory to practical applications.
 
 .. References
 .. ..........

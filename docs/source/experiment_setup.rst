@@ -109,7 +109,7 @@ In this project, we have three evaluation metrics:
   Accuracy of the trained model, the most common metric in machine learning field.
 
 The reason that we adopt ACC in addition to AUC is that accuracy is normally the most intuitive indication of the 
-model's performance. [1]_ only considers AUC since Amazon dataset is extremely unbalanced. The comparison of AUC 
+model's performance. Rashish [1]_ only considers AUC since Amazon dataset is extremely unbalanced. The comparison of AUC 
 and ACC can be found in the figure below:
 
     .. image:: setup/AUCvsACC.png
