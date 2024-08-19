@@ -183,7 +183,7 @@ output as the evaluation metrics over iteration or over time. The model is shown
    .. image:: intro/model.png
       :alt: model
       :width: 400px
-      :height: 300px
+      :height: 180px
       :align: center
 
 Though the process is quite automatic, it does not exclude the cutomizability from the user, as the user have the 
