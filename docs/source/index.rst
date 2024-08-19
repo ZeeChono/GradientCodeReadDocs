@@ -12,7 +12,7 @@ This document consists of three sections:
 - Run simulation
 
 
-Check out the :doc:`cluster_setup` section for further information on AWS setup,
+Check out the :doc:`cluster_setup` section for further information on AWS setup, 
 and checkout to the :doc:`run_simulation` section for how to run the code.
 
 .. note::
