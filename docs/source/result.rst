@@ -30,7 +30,7 @@ inflection points on the curve corresponding to the timestamp are around the sam
         :height: 180px
         :align: center
 
-    .. image:: setup/reproduction_auc.png
+    .. image:: result/reproduction_auc.png
         :alt: reproduction_auc
         :width: 400px
         :height: 180px
